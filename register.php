@@ -60,5 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
     <script src="js/script.js"></script>
+    <script src="js\wow.mim.js"></script>
 </body>
 </html>
