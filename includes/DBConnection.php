@@ -5,7 +5,7 @@ function OpenCon()
     $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "";
-    $db = "group10Database";
+    $db = "gym_management";
 
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $db) or die("Connect failed: %s\n". $conn -> error);
 

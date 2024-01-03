@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2)
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  main {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .sidebar {
+    width: 250px;
+    padding-right: 20px;
+  }
+  
+  .search-section {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .search-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .search-container {
+    text-align: left;
+  }
+  
+  #searchInput {
+    padding: 8px;
+    font-size: 16px;
+    width: 150px;
+  }
+  
+  #searchButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #searchButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .content {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .member-list {
+    width: 100%;
+  }
+  
+  .member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .member:last-child {
+    border-bottom: none;
+  }
+  
+  .member-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .profile-btn,
+  .diet-btn,
+  .routine-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .diet-btn {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .routine-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .profile-btn:hover,
+  .diet-btn:hover,
+  .routine-btn:hover {
+    opacity: 0.8;
+  }
