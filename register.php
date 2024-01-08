@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/DBConnection.php';
+phpinfo();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Kiểm tra xem $conn đã được định nghĩa hay chưa
