@@ -1,2 +1,0 @@
-# GymManagment
-GymManagment

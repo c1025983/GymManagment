@@ -1,7 +1,7 @@
 <?php
 
-@include 'config.php';
-@include 'controller.php';
+@include 'helper/config.php';
+@include 'helper/controller.php';
 
 registerController(); // Call the registerController function
 
@@ -10,19 +10,18 @@ registerController(); // Call the registerController function
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Other head elements -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Register Form</title>
-
-   <!-- Custom CSS file link -->
-   <link rel="stylesheet" href="css/style.css">
-
+   <link rel="stylesheet" href="assets/css/style.css">
+   <link rel="stylesheet" href="assets/css/register_form.css">
 </head>
 <body>
    
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>register now</h3>
+      <h3>Register Now</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -30,17 +29,18 @@ registerController(); // Call the registerController function
          };
       };
       ?>
-      <input type="text" name="username" required placeholder="enter your username">
-      <input type="password" name="password" required placeholder="enter your password">
+      <input type="text" name="username" required placeholder="Enter your username">
+      <input type="password" name="password" required placeholder="Enter your password">
       <select name="user_type">
-         <option value="member">member</option>
-         <option value="trainer">trainer</option>
+         <option value="member">Member</option>
+         <option value="trainer">Trainer</option>
       </select>
-      <input type="submit" name="submit" value="register now" class="form-btn">
-      <p>already have an account? <a href="login_form.php">login now</a></p>
+      <input type="submit" name="submit" value="Register Now" class="form-btn">
+      <p>Already have an account? <a href="login_form.php">Login now</a></p>
    </form>
 
 </div>
 
 </body>
 </html>
+

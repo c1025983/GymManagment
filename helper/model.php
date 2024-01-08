@@ -30,7 +30,7 @@ function loginUser($username, $password) {
     return false;
 }
 
-function registerUser($username, $password) {
+function registerUser($username, $password, $role) {
     global $conn;
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -42,10 +42,11 @@ function registerUser($username, $password) {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) == 0) {
-        $insert = "INSERT INTO member (username, password) VALUES (?, ?)";
+        $insert = "INSERT INTO member (username, password, role) VALUES (?, ?, ?)";
         $stmt = mysqli_prepare($conn, $insert);
-        mysqli_stmt_bind_param($stmt, "ss", $username, $hashedPassword);
+        mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPassword, $role);
         mysqli_stmt_execute($stmt);
     }
 }
+
 ?>
