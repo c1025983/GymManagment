@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* Add a default font */
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    color: black; /* Default text color */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Inherits color from parent */
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    background-color: #008080; /* Add a background color to the header */
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #dddd;
+}
+
+.member-content {
+    display: flex;
+}
+
+.member-content-left {
+    background-color: #f4f4f4; /* Light background for sidebar */
+    width: 250px; /* Fixed width for sidebar */
+    height: calc(100vh - 100px); /* Full height minus header */
+    padding: 20px;
+}
+
+.member-content-left ul li {
+    margin-bottom: 15px;
+}
+
+.member-content-left> ul> li> a {
+    font-weight: bold;
+    display: block; /* Makes each link block-level, allowing margin */
+    margin-bottom: 5px;
+}
+
+.member-content-left ul ul {
+    margin-left: 20px;
+}
+
+.member-content-right {
+    flex: 1; /* Takes up the remaining space */
+    padding: 20px;
+}
+
+.member-content-right-list {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* A subtle shadow */
+}
+
+.member-content-right-list form {
+    margin-top: 10px;
+}
+
+.member-content-right-list input[type='text'] {
+    width: calc(100% - 24px); /* Full width minus padding */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.member-content-right-list button {
+    padding: 10px 15px;
+    background-color: #008080; /* Matching the header */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.member-content-right-list button:hover {
+    background-color: #004D40; /* A darker shade for hover */
+}
+
+/* ---------- Workout List ---------------- */
+.member-content-right-list table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.member-content-right-list th {
+    border: 1px solid #008080; /* Add border style */
+}
+
+.mt-2{
+    margin-top: 20px;
+}
+.mt-1{
+    margin-top: 10px;
+}
