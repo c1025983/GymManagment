@@ -1,99 +1,108 @@
 <?php
 
+
 @include 'helper/config.php';
 @include 'helper/controller.php';
 
 if (!isset($_SESSION['user_name'])) {
- header('location:login_form.php');
-}
-if ($_SESSION['role'] != 'trainer') {
-  header('Location: index.html');
-}
+    header('location:login_form.php');
+   }
+   if ($_SESSION['role'] != 'trainer') {
+     header('Location: index.html');
+   }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trainer Page</title>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
-  <link rel="stylesheet" href="assets/css/trainerPage.css">
+    <meta charset="UTF-8">
+    <title>Trainer Page</title>
 
-  <style type="text/css">
-   
-    header {
-      background-color: #3498db;
-      color: #fff;
-      padding: 20px;
-      text-align: center; /* Yazıyı ortala */
-      position: relative;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .btn {
-      position: absolute;
-      top: 20px; /* Header'ın üstünden 20px aşağıda */
-      right: 20px; /* Sağdan 20px içeriye */
-      display: inline-block;
-      padding: 10px 15px;
-      text-decoration: none;
-      background-color: #2ecc71;
-      color: #fff;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #27ae60;
-    }
-  </style>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+    <link rel="stylesheet" href="css/trainerPage.css">
+    
+    
 </head>
 <body>
+<header>
+  <h1>Trainer Page</h1>
+  <a href="logout.php" class="btn">Logout</a>
+</header>
+  <form action="memberDropdown.php" method="post">
+    <label for="memberSelect">Select a Member:</label>
+    <select name="memberSelect" id="memberSelect">
+    <option disabled selected value>  select a member </option>
+        <?php
+        
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "gym_management"; 
 
-  <header>
-    <h1>ModernGym Trainer Page</h1>
-    <a href="logout.php" class="btn">Logout</a>
-  </header>
+     
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-  <main>
-    <div class="sidebar">
-      <div class="search-section">
-        <h2>Search Members</h2>
-        <div class="search-container">
-          <input type="text" id="searchInput" placeholder="Search...">
-          <button type="button" id="searchButton">Search</button>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <h2>Member List</h2>
-      <div class="member-list">
-        <div class="member">
-          <span>Member 1</span>
-          <div class="member-actions">
-            <button class="profile-btn">View Profile</button>
-            <button class="diet-btn">View Diet</button>
-            <button class="routine-btn">View Routine</button>
-          </div>
-        </div>
-        <div class="member">
-          <span>Member 2</span>
-          <div class="member-actions">
-            <button class="profile-btn">View Profile</button>
-            <button class="diet-btn">View Diet</button>
-            <button class="routine-btn">View Routine</button>
-          </div>
-        </div>
-        <!-- Add more members as needed -->
-      </div>
-    </div>
-  </main>
+       
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-  <script src="assets/js/script.js"></script>
+        //retrieves users with member role
+        $sql = "SELECT memberID, username FROM member WHERE member.role = 'member'"; 
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            //loops through query result to add options to the drop down
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row["memberID"] . "'>" . $row["username"] . "</option>";
+            }
+        } else {
+            echo "<option value=''>No members found</option>";
+        }
+
+       
+        $conn->close();
+        ?>
+    </select>
+  </form>      
+  
+ 
+<div id="workoutDescriptionContainer">
+    <h3>Workout Description</h3>
+    <textarea name="workoutDescription" id="workoutDescription" placeholder="Enter workout description here"></textarea>
+    <h3>Duration</h3>
+    <textarea name="workoutDuration" id="workoutDuration" placeholder="Enter an integer to represent minutes. Non integer will save this value as a blank"></textarea>
+    <h3>Calories</h3>
+    <textarea name="workoutCalories" id="workoutCalories" placeholder="Enter an integer to represent calories burnt. Non integer will be saved as a blank"></textarea>
+    <br> <br>
+    <button id="updateButton" onclick="updateWorkoutDescription()">Update workout info</button>
+</div>
+<br>
+
+<div id="dietContainer">
+        <h3>Diet Plan</h3>
+        <textarea name="dietDescription" id="dietDescription" placeholder="Enter diet description here"></textarea>
+        
+        <h3>Calories</h3>
+        <textarea name="calories" id="calories" placeholder="Calories"></textarea>
+        
+        <h3>Fats</h3>
+        <textarea name="fats" id="fats" placeholder="Fats"></textarea>
+        
+        <h3>Carbs</h3>
+        <textarea name = "carbs" id="carbs" placeholder="Carbs"></textarea>
+        
+        <h3>Protein</h3>
+        <textarea name = "protein" id="protein" placeholder="Protein"></textarea>
+        <br>
+        <button id = "dietButton" id ="updateDietButton" onclick="updateDietDescription()">Update Description</button>
+        
+        
+</div>
+<br>
+<script src = "js/TrainerPage.js"></script>
+
+
 </body>
 </html>
