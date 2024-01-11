@@ -1,7 +1,4 @@
-<?php 
-include "config.php";
-include "database.php";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +25,7 @@ include "database.php";
 }
         </style>
         <h1>MEMBER</h1>
-        <a href="logout.php" class="logout-button">Logout</a>
+        <a href="GymManagment\logout.php" class="logout-button">Logout</a>
     </header>
 
 </body>
