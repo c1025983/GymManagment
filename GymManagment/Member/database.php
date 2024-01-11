@@ -1,5 +1,7 @@
+
 <?php
-class Database {
+class Database
+{
     public $host = DB_HOST;
     public $user = DB_USER;
     public $pass = DB_PASS;
@@ -8,11 +10,13 @@ class Database {
     public $link;
     public $error;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connectDB();
     }
 
-    private function connectDB() {
+    private function connectDB()
+    {
         $this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
         if ($this->link->connect_error) {
             $this->error = "Connection fail: " . $this->link->connect_error;
@@ -21,7 +25,8 @@ class Database {
     }
     //select
 
-    public function select($query) {
+    public function select($query)
+    {
         $result = $this->link->query($query) or die("Error in query: " . $this->link->error . "<br> Query: " . $query);
         if ($result->num_rows > 0) {
             return $result;
@@ -30,7 +35,8 @@ class Database {
         }
     }
     //inser (read)
-    public function insert($table, $data) {
+    public function insert($table, $data)
+    {
         $columns = implode(', ', array_keys($data));
         $values = "'" . implode("', '", array_values($data)) . "'";
         $query = "INSERT INTO $table ($columns) VALUES ($values)";
@@ -41,7 +47,8 @@ class Database {
         }
     }
     //update
-    public function update($table, $data, $where) {
+    public function update($table, $data, $where)
+    {
         $set = '';
         foreach ($data as $key => $value) {
             $set .= "$key = '$value', ";
@@ -56,7 +63,8 @@ class Database {
     }
 
     //delete
-    public function delete($table, $where) {
+    public function delete($table, $where)
+    {
         $query = "DELETE FROM $table WHERE $where";
         if ($this->link->query($query)) {
             return true;
